@@ -86,4 +86,9 @@ void sort_data();
 char *changed_flights(t_array_list *args);
 char *most_delayed_airlines(t_array_list *args);
 t_bool contains(t_array_list list, char *code);
+char *avg_flight_duration(t_array_list *args);
+
+void free_airline(void *item);
+void free_airport(void *item);
+void free_flight(void *item);
 #endif

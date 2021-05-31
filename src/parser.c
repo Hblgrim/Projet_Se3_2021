@@ -12,6 +12,7 @@ void parse_air_lines() {
                       sizeof(char *));
   else {
     get_next_line(fd, &line);
+    free(line);
     while (get_next_line(fd, &line) > 0) {
       if (line != NULL) {
         airline = new_airline(line);
@@ -20,8 +21,11 @@ void parse_air_lines() {
                             sizeof(char *));
         else
           data->airlines.push(&(data->airlines), airline, sizeof(t_airline));
+        free(line);
       }
+      
     }
+    free(line);
   }
 }
 
@@ -36,6 +40,7 @@ void parse_flights() {
                       sizeof(char *));
   else {
     get_next_line(fd, &line);
+    free(line);
     while (get_next_line(fd, &line) > 0) {
       if (line != NULL) {
         flight = new_flight(line);
@@ -44,8 +49,10 @@ void parse_flights() {
                             sizeof(char *));
         else
           data->flights.push(&(data->flights), flight, sizeof(t_flight));
+      free(line);
       }
     }
+    free(line);
   }
 }
 
@@ -60,6 +67,7 @@ void parse_air_ports() {
                       sizeof(char *));
   else {
     get_next_line(fd, &line);
+    free(line);
     while (get_next_line(fd, &line) > 0) {
       if (line != NULL) {
         airport = new_airport(line);
@@ -68,8 +76,10 @@ void parse_air_ports() {
                             sizeof(char *));
         else
           data->airports.push(&(data->airports), airport, sizeof(t_airport));
+        free(line);
       }
     }
+    free(line);
   }
 }
 

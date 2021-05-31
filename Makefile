@@ -17,7 +17,7 @@ stringbuilder:
 	$(MAKE) -C ./lib/stringbuilder/
 
 $(NAME): $(stringbuilder) $(arryalist)
-	gcc -fsanitize=address -g $(SRC) $(LIB) $(INCLUDES) -o $(NAME)
+	gcc -g $(SRC) $(LIB) $(INCLUDES) -o $(NAME)
 
 all:  $(NAME)
 

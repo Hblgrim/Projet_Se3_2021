@@ -5,6 +5,14 @@ void print_airlines(void *item) {
     printf("%s", ((t_airline *)item)->to_string((t_airline *)item));
   }
 }
+void free_airline(void *item) {
+  if (item != NULL) {
+    t_airline *airline = (t_airline *)item;
+    free(airline->iata_code);
+    free(airline->airline);
+    free(airline);
+  }
+}
 
 char *airline_to_string(t_airline *this) {
   char *str;
@@ -47,6 +55,8 @@ t_airline *new_airline(char *line) {
       airline->retard_moyen = 0;
       airline->nb_flights = 0;
       airline->to_string = &airline_to_string;
+      data->free(data, &free);
+      free(data);
     } else
       return NULL;
   }

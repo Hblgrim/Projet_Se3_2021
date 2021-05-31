@@ -5,6 +5,17 @@ void print_airports(void *item) {
     printf("%s", ((t_airport *)item)->to_string((t_airport *)item));
   }
 }
+void free_airport(void *item) {
+  if (item != NULL) {
+    t_airport *airport = (t_airport *)item;
+    free(airport->airport_name);
+    free(airport->city);
+    free(airport->iata_code);
+    free(airport->state);
+    free(airport->country);
+    free(airport);
+  }
+}
 
 t_airport *new_airport(char *line) {
   t_airport *airport;
@@ -39,6 +50,8 @@ t_airport *new_airport(char *line) {
       str = data->get(data, 6);
       airport->logitude = atof(str);
       airport->to_string = &airport_to_string;
+      data->free(data, &free);
+      free(data);
     } else
       return NULL;
   }

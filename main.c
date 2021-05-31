@@ -146,6 +146,8 @@ ex_cmd excecute(char *cmd) {
     return &most_delayed_airlines_at_airport;
   case 7:
     return &changed_flights;
+  case 8:
+    return &avg_flight_duration;
   default:
     return &bad_command;
   }
@@ -167,7 +169,17 @@ t_bool excecute_command(t_array_list *command) {
   }
   return FALSE;
 }
-
+void free_data()
+{
+  if (data != NULL)
+  {
+    data->airlines.free(&data->airlines, &free_airline);
+    data->airports.free(&data->airports, &free_airport);
+    data->flights.free(&data->flights, &free_flight);
+    data->errors.free(&data->errors, &free);
+    free(data);
+  }
+}
 int main() {
   char *line;
   t_array_list *command;
@@ -193,8 +205,9 @@ int main() {
     else if (!excecute_command(command))
       printf("missing args \n %s\n", usage);
     write(1, ">", 1);
-    // free(line);
+    free(line);
+   
   }
-  // free data and line
+  free_data();
   exit(0);
 }

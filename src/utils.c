@@ -28,6 +28,7 @@ t_array_list *split(char *line, char ch) {
 
     l = ft_substr(line, lasti, i - lasti);
     data->push(data, strdup(l), sizeof(char *));
+    free(l);
     i++;
     lasti = i;
     if (i > size)

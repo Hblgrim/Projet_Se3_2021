@@ -32,10 +32,10 @@ void sort_data() {
   t_airline *airline;
   t_flight *flight;
 
-// sort flights from least arr_delay to high arr-dely
+  // sort flights from least arr_delay to high arr-dely
   data->flights.sort(&data->flights, flights_conditions, 0,
                      data->flights.index - 1);
-// calcul dial retard moyen
+  // calcul dial retard moyen
   for (int i = 0; i < data->airlines.index; i++) {
     airline = data->airlines.get(&data->airlines, i);
     if (airline != NULL)
@@ -52,7 +52,7 @@ void sort_data() {
   }
 
   // tartib dial airlines 3la hassab retart_moyen mn lkbir l sghir
-  
+
   data->airlines.sort(&data->airlines, airlines_conditions, 0,
                       data->airlines.index - 1);
 }

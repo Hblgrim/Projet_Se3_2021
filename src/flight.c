@@ -86,8 +86,21 @@ t_flight *new_flight(char *line) {
       str = data->get(data, 13);
       flight->cancelled = atoi(str);
       flight->to_string = &flight_to_string;
+      data->free(data, &free);
+      free(data);
     } else
       return NULL;
   }
   return flight;
+}
+void free_flight(void *item)
+{
+  if (item != NULL)
+  {
+    t_flight *flight = (t_flight *) item;
+    free(flight->airline);
+    free(flight->org_air);
+    free(flight->dest_air);
+    free(flight);
+  }
 }
