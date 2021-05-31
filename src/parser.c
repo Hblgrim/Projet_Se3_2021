@@ -6,7 +6,7 @@ void parse_air_lines() {
   char *line;
   t_airline *airline;
 
-  fd = open("/home/b0n3/Desktop/cTest/data/airlines.csv", O_RDONLY);
+  fd = open("./data/airlines.csv", O_RDONLY);
   if (fd < 0)
     data->errors.push(&data->errors, "file : airlines.csv not found",
                       sizeof(char *));
@@ -34,7 +34,7 @@ void parse_flights() {
   char *line;
   t_flight *flight;
 
-  fd = open("/home/b0n3/Desktop/cTest/data/flights.csv", O_RDONLY);
+  fd = open("./data/flights.csv", O_RDONLY);
   if (fd < 0)
     data->errors.push(&data->errors, "file : flights.csv not found",
                       sizeof(char *));
@@ -61,7 +61,7 @@ void parse_air_ports() {
   char *line;
   t_airport *airport;
 
-  fd = open("/home/b0n3/Desktop/cTest/data/airports.csv", O_RDONLY);
+  fd = open("./data/airports.csv", O_RDONLY);
   if (fd < 0)
     data->errors.push(&data->errors, "file : airports.csv not found",
                       sizeof(char *));
