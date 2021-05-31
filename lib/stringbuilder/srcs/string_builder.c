@@ -1,6 +1,6 @@
 #include "stringbuilder.h"
 
-size_t sb_append_va_args(t_string_builder *this, char *format, va_list args) {
+size_t sb_append_va_args(t_string_builder *this, char *format, va_list args) {//ajouter une liste de fragment a partair de va_args
   size_t len = 0;
   char *buf;
 
@@ -16,7 +16,7 @@ size_t sb_append_va_args(t_string_builder *this, char *format, va_list args) {
   return len;
 }
 
-t_string_builder *new_string_builder(char *str) {
+t_string_builder *new_string_builder(char *str) {//il alloue la place d'une string_builder et il l'initialise
   t_string_builder *sb;
 
   if (str == NULL)
@@ -28,7 +28,7 @@ t_string_builder *new_string_builder(char *str) {
   return sb;
 }
 
-t_string_builder *new_string_builder_formated(char *format, ...) {
+t_string_builder *new_string_builder_formated(char *format, ...) {//il fait la meme chose avec avec d'autres types de data 
   t_string_builder *sb;
   va_list args;
 
@@ -43,7 +43,7 @@ t_string_builder *new_string_builder_formated(char *format, ...) {
   return sb;
 }
 
-t_string_builder *new_empty_string_builder() {
+t_string_builder *new_empty_string_builder() {//donne un string vuilder vide
   t_string_builder *sb;
 
   sb = (t_string_builder *)malloc(sizeof(t_string_builder));
@@ -63,7 +63,7 @@ t_string_builder *new_empty_string_builder() {
   return sb;
 }
 
-size_t sb_append(t_string_builder *this, char *str) {
+size_t sb_append(t_string_builder *this, char *str) { //il ajoute un autre string
   t_fragment *fragment;
 
   if (this == NULL || str == NULL)
@@ -77,7 +77,7 @@ size_t sb_append(t_string_builder *this, char *str) {
   return fragment->length;
 }
 
-size_t sb_append_formated(t_string_builder *this, char *format, ...) {
+size_t sb_append_formated(t_string_builder *this, char *format, ...) {//il append avec d'autres format
   va_list args;
   size_t len = 0;
   if (this == NULL || format == NULL)
@@ -88,7 +88,7 @@ size_t sb_append_formated(t_string_builder *this, char *format, ...) {
   return len;
 }
 
-char *sb_to_string(t_string_builder *this) {
+char *sb_to_string(t_string_builder *this) {//convert to un string avec des fragment qu'on a push
   char *ret;
   t_fragment *fragment;
 
@@ -106,14 +106,14 @@ char *sb_to_string(t_string_builder *this) {
   return ret;
 }
 
-void sb_empty(t_string_builder *this) {
+void sb_empty(t_string_builder *this) {//il vide le string builder
   if (this == NULL)
     return;
   this->fragments.empty(&this->fragments, &fragment_free);
   this->length = 0;
 }
 
-void sb_free(t_string_builder *this) {
+void sb_free(t_string_builder *this) {//il free
   if (this == NULL)
     return;
   this->fragments.free(&this->fragments, &fragment_free);

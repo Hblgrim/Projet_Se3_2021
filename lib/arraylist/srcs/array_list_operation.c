@@ -1,13 +1,13 @@
 #include "array_list.h"
 
-t_bool check_data_type(t_array_list *this, size_t size_of_item) {
+t_bool check_data_type(t_array_list *this, size_t size_of_item) {//check la taille d'une data
   if (this != NULL) {
     if (size_of_item == this->size_of_object)
       return TRUE;
   }
   return FALSE;
 }
-t_bool check_size(t_array_list *this) {
+t_bool check_size(t_array_list *this) { //checker la taille
   if (this != NULL) {
     if (this->index < this->length)
       return TRUE;
@@ -15,7 +15,7 @@ t_bool check_size(t_array_list *this) {
   return FALSE;
 }
 
-t_bool new_array_double_size(t_array_list *this) {
+t_bool new_array_double_size(t_array_list *this) {//donne une nouvelle liste dont la taille est double
   if (this != NULL) {
     if (this->check_size(this))
       return TRUE;
@@ -38,7 +38,7 @@ t_bool new_array_double_size(t_array_list *this) {
   return FALSE;
 }
 
-void *pop(t_array_list *this) {
+void *pop(t_array_list *this) { //doubler la taille d'une liste
   void *ptr;
   size_t i;
 

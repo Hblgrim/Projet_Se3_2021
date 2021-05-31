@@ -1,7 +1,7 @@
 #include "array_list.h"
 
 t_array_list *new_array_list(t_array_list *this, size_t first_size,
-                             size_t __sizeofit) {
+                             size_t __sizeofit) { //alloue une place pour une new_arraylist càd nouvelle liste
   this->arr = malloc(first_size * __sizeofit);
   if (this->arr != NULL) {
     this->index = 0;
@@ -28,7 +28,7 @@ t_array_list *new_array_list(t_array_list *this, size_t first_size,
   return NULL;
 }
 
-void foreach (t_array_list *this, void (*f)(void *item)) {
+void foreach (t_array_list *this, void (*f)(void *item)) { //repeter la meme operation pour tous les elements
   size_t i;
 
   i = 0;
@@ -39,7 +39,7 @@ void foreach (t_array_list *this, void (*f)(void *item)) {
   }
 }
 
-void ft_swap(void **a, void **b) {
+void ft_swap(void **a, void **b) { //swap 2 elements
   void *temp;
   temp = *a;
   *a = *b;

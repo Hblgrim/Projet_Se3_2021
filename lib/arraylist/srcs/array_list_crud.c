@@ -1,6 +1,6 @@
 #include "array_list.h"
 
-t_bool push(t_array_list *this, void *value, size_t size_of_item) {
+t_bool push(t_array_list *this, void *value, size_t size_of_item) { //ajouter un element dans une liste
   if (this != NULL)
     if (this->check_data_type(this, size_of_item)) {
       if (this->check_size(this)) {
@@ -25,7 +25,7 @@ t_bool update_at(t_array_list *this, void *value, size_t index) {
   return FALSE;
 }
 
-void *get(t_array_list *this, size_t index) {
+void *get(t_array_list *this, size_t index) { //permet de prendre un element dans à un certain index i
   if (this->index > index)
     return this->arr[index];
   return NULL;

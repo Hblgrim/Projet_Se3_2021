@@ -1,5 +1,5 @@
 #include "stringbuilder.h"
-t_fragment *new_fragment(char *str, size_t length, size_t length_before) {
+t_fragment *new_fragment(char *str, size_t length, size_t length_before) {//donne un new fragment
   t_fragment *fragment;
   if (str == NULL)
     return NULL;
@@ -18,7 +18,7 @@ t_fragment *new_fragment(char *str, size_t length, size_t length_before) {
   return fragment;
 }
 
-void fragment_free(t_fragment *this) {
+void fragment_free(t_fragment *this) { //faire un free de fragment
   if (this == NULL)
     return;
   free(this->str);
