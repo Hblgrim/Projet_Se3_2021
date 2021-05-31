@@ -43,7 +43,7 @@ int find(char **line, char **rest, int retn) {
   return (retn);
 }
 
-int get_next_line(int fd, char **line) {
+int get_next_line(int fd, char **line) { //cette fonction permet de passer à la ligne suivante
   static char *rest[255];
   int ret;
 
